@@ -24,7 +24,10 @@ class _SecondPageState extends State<SecondPage> {
             child: Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(),
+              decoration: BoxDecoration(
+                image: DecorationImage(image:
+                AssetImage(heroTag), fit:BoxFit.cover)
+              ),
             ),
           )
         ],
