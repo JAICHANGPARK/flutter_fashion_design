@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_design/secondpage.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,30 +10,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: MyHome(),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHome extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  _MyHomeState createState() => _MyHomeState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  TabController controller;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    controller = new TabController(vsync: this, length: 4);
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    // TODO: implement dispose
+    controller.dispose();
     super.dispose();
   }
 
@@ -45,9 +47,9 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
         title: Text(
           'Discovery',
           style: TextStyle(
-              fontSize: 22.0,
-              color: Colors.black,
               fontFamily: 'Montserrat',
+              color: Colors.black,
+              fontSize: 22.0,
               fontWeight: FontWeight.bold),
         ),
         actions: <Widget>[
@@ -59,10 +61,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.only(
-          top: 15.0,
-          bottom: 15.0,
-        ),
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
         children: <Widget>[
           Container(
             height: 150.0,
@@ -106,12 +105,9 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                                   image: AssetImage('assets/model1.jpeg'),
                                   fit: BoxFit.cover)),
                         ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
+                        SizedBox(width: 10.0),
                         Container(
-                          width: (MediaQuery.of(context).size.width) -
-                              120.0, // 30 + 30+50 + 10
+                          width: MediaQuery.of(context).size.width - 120.0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -135,11 +131,8 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                                   ),
                                 ],
                               ),
-                              Icon(
-                                Icons.more_vert,
-                                color: Colors.grey,
-                                size: 20.0,
-                              )
+                              Icon(Icons.more_vert,
+                                  color: Colors.grey, size: 20.0)
                             ],
                           ),
                         )
@@ -156,35 +149,44 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                     SizedBox(height: 10.0),
                     Row(
                       children: <Widget>[
-                        Hero(
-                          tag: 'assets/modelgrid1.jpeg',
-                          child: Container(
-                            height: 200.0,
-                            width: (MediaQuery.of(context).size.width - 50) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.0),
-                                image: DecorationImage(
-                                    image: AssetImage('assets/modelgrid1.jpeg'),
-                                    fit: BoxFit.cover)),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => SecondPage(heroTag: 'assets/modelgrid1.jpeg')
+                            ));
+                          },
+                          child: Hero(
+                            tag: 'assets/modelgrid1.jpeg',
+                            child: Container(
+                              height: 200.0,
+                              width:
+                              (MediaQuery.of(context).size.width - 50.0) /
+                                  2,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/modelgrid1.jpeg',
+                                      ),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                         ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
+                        SizedBox(width: 10.0),
                         Column(
                           children: <Widget>[
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SecondPage(
-                                        heroTag: 'assets/modelgrid2.jpeg')));
+                                    builder: (context) => SecondPage(heroTag: 'assets/modelgrid2.jpeg')
+                                ));
                               },
                               child: Hero(
                                 tag: 'assets/modelgrid2.jpeg',
                                 child: Container(
                                   height: 95.0,
                                   width: (MediaQuery.of(context).size.width -
-                                          100.0) /
+                                      100.0) /
                                       2,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5.0),
@@ -199,15 +201,15 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             InkWell(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SecondPage(
-                                        heroTag: 'assets/modelgrid3.jpeg')));
+                                    builder: (context) => SecondPage(heroTag: 'assets/modelgrid3.jpeg')
+                                ));
                               },
                               child: Hero(
                                 tag: 'assets/modelgrid3.jpeg',
                                 child: Container(
                                   height: 95.0,
                                   width: (MediaQuery.of(context).size.width -
-                                          100.0) /
+                                      100.0) /
                                       2,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5.0),
@@ -219,12 +221,10 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                               ),
                             )
                           ],
-                        ),
+                        )
                       ],
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
+                    SizedBox(height: 10.0),
                     Row(
                       children: <Widget>[
                         Container(
@@ -236,7 +236,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                           ),
                           child: Center(
                             child: Text(
-                              '# Louis Vuitton',
+                              '# Louis vuitton',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontSize: 10.0,
@@ -244,13 +244,13 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                             ),
                           ),
                         ),
+                        SizedBox(width: 10.0),
                         Container(
                           height: 25.0,
-                          width: 100.0,
+                          width: 75.0,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: Colors.brown.withOpacity(0.2),
-                          ),
+                              borderRadius: BorderRadius.circular(5.0),
+                              color: Colors.brown.withOpacity(0.2)),
                           child: Center(
                             child: Text(
                               '# Chloe',
@@ -260,40 +260,28 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                                   color: Colors.brown),
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                    SizedBox(height: 20.0),
                     Container(
                       height: 1.0,
                       width: double.infinity,
                       decoration:
-                          BoxDecoration(color: Colors.grey.withOpacity(0.2)),
+                      BoxDecoration(color: Colors.grey.withOpacity(0.2)),
                     ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                    SizedBox(height: 20.0),
                     Row(
                       children: <Widget>[
-                        //공유
-                        Icon(
-                          Icons.reply,
-                          color: Colors.grey.withOpacity(0.4),
-                          size: 20.0,
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
+                        Icon(Icons.reply,
+                            color: Colors.grey.withOpacity(0.4), size: 20.0),
+                        SizedBox(width: 5.0),
                         Text(
-                          '1.7K',
+                          '1.7k',
                           style: TextStyle(
                               color: Colors.grey, fontFamily: 'Montserrat'),
                         ),
-
                         SizedBox(width: 15.0),
-                        // 댓글
                         Icon(
                           Icons.comment,
                           color: Colors.grey.withOpacity(0.4),
@@ -305,8 +293,6 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                           style: TextStyle(
                               color: Colors.grey, fontFamily: 'Montserrat'),
                         ),
-
-                        //하트
                         Container(
                           width: MediaQuery.of(context).size.width - 175.0,
                           child: Row(
@@ -326,9 +312,9 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                               ),
                             ],
                           ),
-                        ),
+                        )
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -339,6 +325,8 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       bottomNavigationBar: Material(
         color: Colors.white,
         child: TabBar(
+          controller: controller,
+          indicatorColor: Colors.transparent,
           tabs: <Widget>[
             Tab(icon: Icon(Icons.more, color: Colors.grey, size: 15.0)),
             Tab(icon: Icon(Icons.play_arrow, color: Colors.grey, size: 15.0)),
@@ -346,11 +334,7 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
             Tab(
                 icon: Icon(Icons.supervised_user_circle,
                     color: Colors.grey, size: 15.0)),
-            
-            
           ],
-          controller: _tabController,
-          indicatorColor: Colors.transparent,
         ),
       ),
     );
@@ -361,7 +345,6 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       children: <Widget>[
         Stack(
           children: <Widget>[
-            //사람 사진 담을 것
             Container(
               height: 75.0,
               width: 75.0,
@@ -370,8 +353,6 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                   image: DecorationImage(
                       image: AssetImage(imgPath), fit: BoxFit.cover)),
             ),
-
-            // 디자인회사 로고
             Positioned(
               top: 50.0,
               left: 50.0,
@@ -381,21 +362,18 @@ class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.5),
                     image: DecorationImage(
-                        image: AssetImage(logo), fit: BoxFit.cover)),
+                        image: AssetImage(logo), fit: BoxFit.contain)),
               ),
             )
           ],
         ),
-        SizedBox(
-          height: 10.0,
-        ),
+        SizedBox(height: 10.0),
         Container(
           height: 30.0,
           width: 75.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: Color(0xFF916144),
-          ),
+              borderRadius: BorderRadius.circular(15.0),
+              color: Color(0xFF916144)),
           child: Center(
             child: Text(
               'Follow',

@@ -26,7 +26,8 @@ class _SecondPageState extends State<SecondPage> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(image:
-                AssetImage(heroTag), fit:BoxFit.cover)
+                AssetImage(heroTag),
+                fit: BoxFit.cover)
               ),
             ),
           )
