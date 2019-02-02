@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_design/secondpage.dart';
+import 'package:flutter_fashion_design/third_page.dart';
 
 
 void main() => runApp(MyApp());
@@ -56,7 +57,12 @@ class _MyHomePageState extends State<MyHomePage>
           IconButton(
             icon: Icon(Icons.camera),
             color: Colors.grey,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ThirdPageApp()
+              ));
+
+            },
           )
         ],
       ),
