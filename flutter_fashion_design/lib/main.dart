@@ -256,12 +256,65 @@ class _MyHomeState extends State<MyHome> {
                       decoration:
                           BoxDecoration(color: Colors.grey.withOpacity(0.2)),
                     ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: <Widget>[
 
+                        //공유 
+                        Icon(
+                          Icons.reply,
+                          color: Colors.grey.withOpacity(0.4),
+                          size: 20.0,
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          '1.7K',
+                          style: TextStyle(
+                              color: Colors.grey, fontFamily: 'Montserrat'),
+                        ),
 
-                    
-
-
-
+                        SizedBox(width: 15.0),
+                        // 댓글
+                        Icon(
+                          Icons.comment,
+                          color: Colors.grey.withOpacity(0.4),
+                          size: 20.0,
+                        ),
+                        SizedBox(width: 5.0),
+                        Text(
+                          '325',
+                          style: TextStyle(
+                              color: Colors.grey, fontFamily: 'Montserrat'),
+                        ),
+                        
+                        //하트
+                        Container(
+                          width: MediaQuery.of(context).size.width - 175.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                                size: 20.0,
+                              ),
+                              SizedBox(width: 5.0),
+                              Text(
+                                '2.3k',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Montserrat'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        
+                      ],
+                    ),
                   ],
                 ),
               ),
