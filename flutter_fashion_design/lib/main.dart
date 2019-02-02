@@ -54,9 +54,35 @@ class _MyHomeState extends State<MyHome> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.all(10.0),
-              children: <Widget>[],
+              children: <Widget>[
+                listItem('assets/model1.jpeg', 'assets/chanellogo.jpg'),
+                SizedBox(width: 35.0),
+                listItem('assets/model2.jpeg', 'assets/louisvuitton.jpg'),
+                SizedBox(width: 35.0),
+                listItem('assets/model3.jpeg', 'assets/chloelogo.png'),
+                SizedBox(width: 35.0),
+                listItem('assets/model1.jpeg', 'assets/chanellogo.jpg'),
+                
+              ],
             ),
           ),
+          
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(15.0),
+              elevation: 4.0,
+              child: Container(
+                height: 450.0,
+                width: double.infinity,
+                padding: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Colors.white
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -92,6 +118,19 @@ class _MyHomeState extends State<MyHome> {
               ),
             )
           ],
+        ),
+        
+        SizedBox(height: 10.0,),
+
+        Container(
+          height: 30.0,
+          width: 75.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0), color: Color(0xFF916144),
+          ),
+          child: Center(
+            child: Text('Follow', style: TextStyle(fontFamily: 'Montserrat', fontSize: 14.0, color: Colors.white),),
+          ),
         )
       ],
     );
