@@ -94,7 +94,8 @@ class _MyHomeState extends State<MyHome> {
                           width: 10.0,
                         ),
                         Container(
-                          width: (MediaQuery.of(context).size.width) - 120.0, // 30 + 30+50 + 10
+                          width: (MediaQuery.of(context).size.width) -
+                              120.0, // 30 + 30+50 + 10
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -128,7 +129,6 @@ class _MyHomeState extends State<MyHome> {
                         )
                       ],
                     ),
-
                     SizedBox(height: 15.0),
                     Text(
                       'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',
@@ -138,7 +138,76 @@ class _MyHomeState extends State<MyHome> {
                           color: Colors.grey),
                     ),
                     SizedBox(height: 10.0),
-                    
+                    Row(
+                      children: <Widget>[
+                        Hero(
+                          tag: 'assets/modelgrid1.jpeg',
+                          child: Container(
+                            height: 200.0,
+                            width: (MediaQuery.of(context).size.width - 50) / 2,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/modelgrid1.jpeg'),
+                                    fit: BoxFit.cover)),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Column(
+                          children: <Widget>[
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => SecondPage(
+                                        heroTag: 'assets/modelgrid2.jpeg')));
+                              },
+                              child: Hero(
+                                tag: 'assets/modelgrid2.jpeg',
+                                child: Container(
+                                  height: 95.0,
+                                  width: (MediaQuery.of(context).size.width - 100.0) / 2,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/modelgrid2.jpeg'),
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => SecondPage(
+                                        heroTag: 'assets/modelgrid3.jpeg')));
+                              },
+                              child: Hero(
+                                tag: 'assets/modelgrid3.jpeg',
+                                child: Container(
+                                  height: 95.0,
+                                  width: (MediaQuery.of(context).size.width -
+                                          100.0) /
+                                      2,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/modelgrid3.jpeg'),
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+
+
+
+
                   ],
                 ),
               ),
