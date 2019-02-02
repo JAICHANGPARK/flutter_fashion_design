@@ -36,6 +36,22 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/modelgrid1.jpeg
+    - assets/modelgrid2.jpeg
+    - assets/modelgrid3.jpeg
+    - assets/model1.jpeg
+    - assets/model2.jpeg
+    - assets/model3.jpeg
+    - assets/chanellogo.jpg
+    - assets/chloelogo.png
+    - assets/louisvuitton.jpg
+    - assets/dress.jpg
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
