@@ -62,11 +62,9 @@ class _MyHomeState extends State<MyHome> {
                 listItem('assets/model3.jpeg', 'assets/chloelogo.png'),
                 SizedBox(width: 35.0),
                 listItem('assets/model1.jpeg', 'assets/chanellogo.jpg'),
-                
               ],
             ),
           ),
-          
           Padding(
             padding: EdgeInsets.all(15.0),
             child: Material(
@@ -77,8 +75,60 @@ class _MyHomeState extends State<MyHome> {
                 width: double.infinity,
                 padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: Colors.white
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Colors.white),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          height: 50.0,
+                          width: 50.0,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25.0),
+                              image: DecorationImage(
+                                  image: AssetImage('assets/model1.jpeg'),
+                                  fit: BoxFit.cover)),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Container(
+                          width: (MediaQuery.of(context).size.width) - 120.0, // 30 + 30+50 + 10
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    'Daisy',
+                                    style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: 2.0),
+                                  Text(
+                                    '34 mins ago',
+                                    style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 12.0,
+                                        color: Colors.grey),
+                                  ),
+                                ],
+                              ),
+                              Icon(
+                                Icons.more_vert,
+                                color: Colors.grey,
+                                size: 20.0,
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
@@ -93,7 +143,6 @@ class _MyHomeState extends State<MyHome> {
       children: <Widget>[
         Stack(
           children: <Widget>[
-
             //사람 사진 담을 것
             Container(
               height: 75.0,
@@ -119,17 +168,24 @@ class _MyHomeState extends State<MyHome> {
             )
           ],
         ),
-        
-        SizedBox(height: 10.0,),
-
+        SizedBox(
+          height: 10.0,
+        ),
         Container(
           height: 30.0,
           width: 75.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0), color: Color(0xFF916144),
+            borderRadius: BorderRadius.circular(15.0),
+            color: Color(0xFF916144),
           ),
           child: Center(
-            child: Text('Follow', style: TextStyle(fontFamily: 'Montserrat', fontSize: 14.0, color: Colors.white),),
+            child: Text(
+              'Follow',
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 14.0,
+                  color: Colors.white),
+            ),
           ),
         )
       ],
