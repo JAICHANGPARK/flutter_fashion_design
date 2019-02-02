@@ -167,7 +167,9 @@ class _MyHomeState extends State<MyHome> {
                                 tag: 'assets/modelgrid2.jpeg',
                                 child: Container(
                                   height: 95.0,
-                                  width: (MediaQuery.of(context).size.width - 100.0) / 2,
+                                  width: (MediaQuery.of(context).size.width -
+                                          100.0) /
+                                      2,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5.0),
                                       image: DecorationImage(
@@ -204,7 +206,59 @@ class _MyHomeState extends State<MyHome> {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          height: 25.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.brown.withOpacity(0.2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '# Louis Vuitton',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 10.0,
+                                  color: Colors.brown),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 25.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.brown.withOpacity(0.2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '# Chloe',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 10.0,
+                                  color: Colors.brown),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      height: 1.0,
+                      width: double.infinity,
+                      decoration:
+                          BoxDecoration(color: Colors.grey.withOpacity(0.2)),
+                    ),
 
+
+                    
 
 
 
