@@ -19,7 +19,22 @@ class MyHome extends StatefulWidget {
   _MyHomeState createState() => _MyHomeState();
 }
 
-class _MyHomeState extends State<MyHome> {
+class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -261,8 +276,7 @@ class _MyHomeState extends State<MyHome> {
                     ),
                     Row(
                       children: <Widget>[
-
-                        //공유 
+                        //공유
                         Icon(
                           Icons.reply,
                           color: Colors.grey.withOpacity(0.4),
@@ -290,7 +304,7 @@ class _MyHomeState extends State<MyHome> {
                           style: TextStyle(
                               color: Colors.grey, fontFamily: 'Montserrat'),
                         ),
-                        
+
                         //하트
                         Container(
                           width: MediaQuery.of(context).size.width - 175.0,
@@ -312,7 +326,6 @@ class _MyHomeState extends State<MyHome> {
                             ],
                           ),
                         ),
-                        
                       ],
                     ),
                   ],
@@ -321,6 +334,23 @@ class _MyHomeState extends State<MyHome> {
             ),
           )
         ],
+      ),
+      bottomNavigationBar: Material(
+        color: Colors.white,
+        child: TabBar(
+          tabs: <Widget>[
+            Tab(icon: Icon(Icons.more, color: Colors.grey, size: 15.0)),
+            Tab(icon: Icon(Icons.play_arrow, color: Colors.grey, size: 15.0)),
+            Tab(icon: Icon(Icons.navigation, color: Colors.black, size: 15.0)),
+            Tab(
+                icon: Icon(Icons.supervised_user_circle,
+                    color: Colors.grey, size: 15.0)),
+            
+            
+          ],
+          controller: _tabController,
+          indicatorColor: Colors.transparent,
+        ),
       ),
     );
   }
