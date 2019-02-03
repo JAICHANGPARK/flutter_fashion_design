@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fashion_design/dashboard_page.dart';
 
 class BottomHomePage extends StatelessWidget {
   @override
@@ -44,8 +45,10 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
               ),
             ),
             ListTile(
-              title: Text("Menu Test 1"),
-              onTap: (){},
+              title: Text("Dashboard"),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DashBoardPage()));
+              },
             ),
 
             ListTile(
