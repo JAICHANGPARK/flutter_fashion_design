@@ -28,6 +28,10 @@ class _ProfilePageState extends State<ProfilePage> {
         iconTheme: IconThemeData(color: Colors.black),
         title: Text("My Profile", style: TextStyle(color: Colors.black),),
       ),
+      
+      body: Center(
+        child: Text("A little Rest Time", style: TextStyle(fontSize: 24.0),),
+      ),
 
 
     );
