@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_design/bottom_page.dart';
+import 'package:flutter_fashion_design/profile_page.dart';
 import 'dart:async';
 import 'dart:convert' as json;
 import 'package:http/http.dart' as http;
@@ -60,6 +61,9 @@ class DBPage extends StatefulWidget {
 }
 
 class _DBPageState extends State<DBPage> {
+
+  var _selectedItem = 0;
+
   Future<List<User>> _getUser() async {
     var response = await http.get("https://jsonplaceholder.typicode.com/users");
 //    print(response.body);
@@ -107,6 +111,7 @@ class _DBPageState extends State<DBPage> {
                   child: Center(
                     child: CircularProgressIndicator(
                       backgroundColor: Colors.black,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
 
                     ),
 //                    child: Text("Loading..."),
@@ -139,8 +144,70 @@ class _DBPageState extends State<DBPage> {
 //      body: Center(
 //        child: Text("dashBoard", style: TextStyle(fontSize: 45.0),),
 //      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: _onItemTapped,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedItem,
+          items: [
+            BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  "Home",
+                  style: TextStyle(color: Colors.black),
+                )),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.dashboard,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  "Dashboard",
+                  style: TextStyle(color: Colors.black),
+                )),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'Profile',
+                  style: TextStyle(color: Colors.black),
+                ))
+          ]),
     );
   }
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedItem = index;
+
+      print(_selectedItem);
+
+      switch (index) {
+        case 0:
+          return;
+        case 1:
+//          Navigator.of(context).pop();
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => DashBoardPage()));
+          return;
+        case 2:
+//          Navigator.of(context).pop();
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => UserProfilePage()));
+
+          return;
+      }
+    });
+  }
+
+
 }
 
 class UserDetailPage extends StatelessWidget {

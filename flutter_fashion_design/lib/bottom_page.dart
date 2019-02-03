@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_design/dashboard_page.dart';
+import 'package:flutter_fashion_design/news_page.dart';
 import 'package:flutter_fashion_design/profile_page.dart';
 import 'dart:async';
 
@@ -188,6 +189,17 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                     "Dashboard",
                     style: TextStyle(color: Colors.black),
                   )),
+
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.chrome_reader_mode,//flutter Icon....
+                    color: Colors.black,
+                  ),
+                  title: Text(
+                    "News",
+                    style: TextStyle(color: Colors.black),
+                  )),
+
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.person,
@@ -196,7 +208,9 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                   title: Text(
                     'Profile',
                     style: TextStyle(color: Colors.black),
-                  ))
+                  ),
+              ),
+
             ]),
       ),
     );
@@ -216,7 +230,14 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => DashBoardPage()));
           return;
-        case 2:
+
+        case 2: // News Page
+//          Navigator.of(context).pop();
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NewsReadPage()));
+
+          return;
+        case 3:
 //          Navigator.of(context).pop();
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => UserProfilePage()));

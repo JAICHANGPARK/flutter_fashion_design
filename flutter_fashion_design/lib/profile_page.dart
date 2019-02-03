@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       
       body: Center(
-        child: Text("A little Rest Time", style: TextStyle(fontSize: 24.0),),
+        child: Text("Thanks for Watching Today", style: TextStyle(fontSize: 24.0),),
       ),
 
 
