@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fashion_design/bottom_page.dart';
 import 'package:flutter_fashion_design/secondpage.dart';
 import 'package:flutter_fashion_design/third_page.dart';
 
+//
+//void main() => runApp(MyApp());
 
-void main() => runApp(MyApp());
+void main() => runApp(BottomHomePage());
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
