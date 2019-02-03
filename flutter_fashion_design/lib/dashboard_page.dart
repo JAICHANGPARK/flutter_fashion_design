@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fashion_design/bottom_page.dart';
 
 
 class DashBoardPage extends StatelessWidget {
@@ -27,12 +28,16 @@ class _DBPageState extends State<DBPage> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
 
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){}),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){
+          Navigator.of(context).pop();
+          Navigator.push(context, MaterialPageRoute(builder: (contex)=> BottomHomePage()));
+        }),
       ),
       
       body: Center(
         child: Text("dashBoard", style: TextStyle(fontSize: 45.0),),
       ),
+
     );
   }
 }
