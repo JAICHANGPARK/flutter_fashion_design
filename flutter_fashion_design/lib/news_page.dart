@@ -181,7 +181,6 @@ class _NewsPageState extends State<NewsPage> {
                           .toList(),
                     );
                   }
-
                   return CircularProgressIndicator();
                 }),
             onRefresh: refreshListSource),
