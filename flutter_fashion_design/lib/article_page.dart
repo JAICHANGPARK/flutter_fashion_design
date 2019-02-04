@@ -70,16 +70,127 @@ class _ArticlePageState extends State<ArticlePage> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Center(),
+      body: Center(
+        child: RefreshIndicator(
+          child: FutureBuilder<List<Articles>>(
+            future: list_articles,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              } else if (snapshot.hasData) {
+                List<Articles> articles = snapshot.data;
+                return ListView(
+                    children: articles
+                        .map((article) => GestureDetector(
+                              onTap: () {
+
+
+
+                                _lauchUrl(widget.sources.url);
+
+
+                              },
+                              child: Card(
+                                elevation: 1.0,
+                                color: Colors.white,
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 16.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          vertical: 24.0, horizontal: 4.0),
+                                      width: 100.0,
+                                      height: 100.0,
+                                      child: article.urlToImage != null
+                                          ? Image.network(
+                                              article.urlToImage,
+                                              fit: BoxFit.cover,
+                                            )
+                                          : Image.network(
+                                              "https://cdn.pixabay.com/photo/2015/07/27/22/56/city-863692_960_720.jpg",
+                                              fit: BoxFit.cover),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Expanded(
+                                                child: Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 8.0,
+                                                      top: 20.0,
+                                                      bottom: 10.0),
+                                                  child: Text(
+                                                    '${article.title}',
+                                                    style: TextStyle(
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+
+                                          Container(
+                                //awwww
+                                            margin: EdgeInsets.only(left: 8.0),
+                                            child: Text(
+                                              '${article.description}',
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                  fontSize: 12.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ),
+
+
+                                          Container(
+                                            margin: EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+                                            child: Text(
+                                              'Published At : ${article.publishedAt}',
+                                              style: TextStyle(
+                                                  color: Colors.black12,
+                                                  fontSize: 12.0,
+                                                  fontWeight:
+                                                  FontWeight.bold),
+                                            ),
+                                          ),
+
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ))
+                        .toList());
+              }
+
+              return CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              );
+            },
+          ),
+          onRefresh: refreshListArticle,
+          key: refreshKey,
+        ),
+      ),
     );
   }
+
+  _lauchUrl(String url) async{
+
+    if(await)
+
+  }
 }
-
-
-
-
-
-
 
 
 
