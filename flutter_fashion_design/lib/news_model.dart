@@ -19,6 +19,41 @@
  *
  */
 
+class Articles {
+  final Sources source;
+  final String author;
+  final String title;
+  final String description;
+  final String url;
+  final String urlToImage;
+  final String publishedAt;
+  final String content;
+
+  Articles(
+      {this.source,
+      this.author,
+      this.title,
+      this.description,
+      this.url,
+      this.urlToImage,
+      this.publishedAt,
+      this.content});
+
+  factory Articles.fromJson(Map<String, dynamic> json) {
+    return Articles(
+        source: Sources.fromJsonForArticle(json['source']),
+        author: json['author'],
+        title: json['title'],
+        description: json['description'],
+        url: json['url'],
+        urlToImage: json['urlToImage'],
+        publishedAt: json['publishedAt'],
+        content: json['content']);
+  }
+}
+
+//------------------------------------------------------------------------------
+
 class NewsAPI {
   String status;
   List<Sources> sources;
@@ -33,25 +68,6 @@ class NewsAPI {
           .toList(),
     );
   }
-
-//  NewsAPI.fromJson(Map<String, dynamic> json) {
-//    status = json['status'];
-//    if (json['sources'] != null) {
-//      sources = new List<Sources>();
-//      json['sources'].forEach((v) {
-//        sources.add(new Sources.fromJson(v));
-//      });
-//    }
-//  }
-//
-//  Map<String, dynamic> toJson() {
-//    final Map<String, dynamic> data = new Map<String, dynamic>();
-//    data['status'] = this.status;
-//    if (this.sources != null) {
-//      data['sources'] = this.sources.map((v) => v.toJson()).toList();
-//    }
-//    return data;
-//  }
 }
 
 class Sources {
@@ -84,25 +100,10 @@ class Sources {
     );
   }
 
-//  Sources.fromJson(Map<String, dynamic> json) {
-//    id = json['id'];
-//    name = json['name'];
-//    description = json['description'];
-//    url = json['url'];
-//    category = json['category'];
-//    language = json['language'];
-//    country = json['country'];
-//  }
-//
-//  Map<String, dynamic> toJson() {
-//    final Map<String, dynamic> data = new Map<String, dynamic>();
-//    data['id'] = this.id;
-//    data['name'] = this.name;
-//    data['description'] = this.description;
-//    data['url'] = this.url;
-//    data['category'] = this.category;
-//    data['language'] = this.language;
-//    data['country'] = this.country;
-//    return data;
-//  }
+  factory Sources.fromJsonForArticle(Map<String, dynamic> json) {
+    return Sources(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
 }

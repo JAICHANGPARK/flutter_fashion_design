@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_fashion_design/article_page.dart';
 import 'package:flutter_fashion_design/dashboard_page.dart';
 import 'package:flutter_fashion_design/profile_page.dart';
 import 'dart:async';
@@ -62,6 +63,10 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (){
+
+        }),
+        elevation: 0.0,
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
@@ -83,7 +88,12 @@ class _NewsPageState extends State<NewsPage> {
                     return ListView(
                       children: sources
                           .map((source) => GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => ArticlePage(sources: source)));
+
+
+                                },
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 16.0, vertical: 16.0),
@@ -181,7 +191,10 @@ class _NewsPageState extends State<NewsPage> {
                           .toList(),
                     );
                   }
-                  return CircularProgressIndicator();
+                  //TODO : CHANGE COLOR
+                  return CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                  );
                 }),
             onRefresh: refreshListSource),
       ),
