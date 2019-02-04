@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_design/article_page.dart';
+import 'package:flutter_fashion_design/bottom_page.dart';
 import 'package:flutter_fashion_design/dashboard_page.dart';
 import 'package:flutter_fashion_design/profile_page.dart';
 import 'dart:async';
@@ -64,6 +65,8 @@ class _NewsPageState extends State<NewsPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (){
+          Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomHomePage()));
 
         }),
         elevation: 0.0,

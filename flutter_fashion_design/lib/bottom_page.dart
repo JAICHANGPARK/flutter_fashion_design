@@ -133,8 +133,10 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
                 },
               ),
               ListTile(
-                title: Text("Menu Test 2"),
-                onTap: () {},
+                title: Text("News"),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> NewsReadPage()));
+                },
               ),
               ListTile(
                 title: Text("Menu Test 3"),

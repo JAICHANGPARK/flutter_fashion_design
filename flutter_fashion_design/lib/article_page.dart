@@ -4,6 +4,8 @@ import 'package:flutter_fashion_design/news_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as json;
 
+import 'package:url_launcher/url_launcher.dart';
+
 Future<List<Articles>> _fetchArticleBySource(String source) async {
   var response = await http.get(
       "https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=26177c7ba8a54b4b9c46981f1b53a11d");
@@ -83,12 +85,7 @@ class _ArticlePageState extends State<ArticlePage> {
                     children: articles
                         .map((article) => GestureDetector(
                               onTap: () {
-
-
-
-                                _lauchUrl(widget.sources.url);
-
-
+                                _launchUrl(article.url);
                               },
                               child: Card(
                                 elevation: 1.0,
@@ -136,33 +133,30 @@ class _ArticlePageState extends State<ArticlePage> {
                                               )
                                             ],
                                           ),
-
                                           Container(
-                                //awwww
+                                            //awwww
                                             margin: EdgeInsets.only(left: 8.0),
                                             child: Text(
                                               '${article.description}',
                                               style: TextStyle(
-                                                color: Colors.grey,
+                                                  color: Colors.grey,
                                                   fontSize: 12.0,
-                                                  fontWeight:
-                                                  FontWeight.bold),
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
-
-
                                           Container(
-                                            margin: EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+                                            margin: EdgeInsets.only(
+                                                left: 8.0,
+                                                top: 8.0,
+                                                bottom: 8.0),
                                             child: Text(
                                               'Published At : ${article.publishedAt}',
                                               style: TextStyle(
                                                   color: Colors.black12,
                                                   fontSize: 12.0,
-                                                  fontWeight:
-                                                  FontWeight.bold),
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
-
                                         ],
                                       ),
                                     )
@@ -185,12 +179,21 @@ class _ArticlePageState extends State<ArticlePage> {
     );
   }
 
-  _lauchUrl(String url) async{
+  _launchUrl(String url) async {
+    //TODO need to import url_launcher hmmm flutter web view?
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
 
-    if(await)
+      throw('Couldn\'t launch $url');
 
+    }
   }
 }
+
+
+
+
 
 
 
